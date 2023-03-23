@@ -1,7 +1,10 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
 import axios from 'axios';
-import Header from '../Header/Header.jsx'
+
+
+import Header from '../Header/Header.jsx';
+import ShoppingListForm from '../ShoppingListForm/ShoppingListForm';
 import './App.css';
 import GetShoppingList from '../GetShoppingList/GetShoppingList.jsx';
 
@@ -9,10 +12,18 @@ import GetShoppingList from '../GetShoppingList/GetShoppingList.jsx';
 
 function App() {
 
-//const
+    //const
 const [shoppingList, setShoppingList] = useState([]);
 
 
+    const addShoppingList = (newShopList) => {
+        axios.post('/shopping_list', newShopList)
+        .then(response => {
+            getShoppingList()
+        }).catch((err) => {
+            alert('Error in POST', err)
+        })
+    };
 
 //useEffect
 useEffect(() => {
@@ -34,9 +45,10 @@ const getShoppingList = () => {
     return (
         <div className="App">
             <Header />
-            <main>
+            <ShoppingListForm addItemToList={addShoppingList}/>
+            {/* <main>
                 <p>Under Construction...</p>
-            </main>
+            </main> */}
             <GetShoppingList list={shoppingList}/>
         </div>
     );
