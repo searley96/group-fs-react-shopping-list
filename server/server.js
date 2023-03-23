@@ -10,7 +10,10 @@ app.use(express.static('build'));
 
 /** ---------- EXPRESS ROUTES ---------- **/
 // Create your API routes in a separate file
+
+
 app.use('/shopping_list', groceryList)
+
 // and plug them in here with `app.use()`
 
 /** ---------- START SERVER ---------- **/
