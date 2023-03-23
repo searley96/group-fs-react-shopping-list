@@ -3,6 +3,11 @@ import { useState, useEffect } from 'react';
 function GetShoppingList({list}) {
     console.log('in GetShoppingList', list)
 
+    function buyBtnToggle(){
+        console.log('inside buyBtnToggle()')
+        
+    }
+
     return (
        <>
        <div>
@@ -17,7 +22,7 @@ function GetShoppingList({list}) {
             <li key={item.id}>{item.name}</li>
             <li>{item.quantity}</li>
             <li>{item.unit}</li>
-            <button>Buy</button>
+            <button onClick={buyBtnToggle}>Buy</button>
             <button>Remove</button>
         </>
        
