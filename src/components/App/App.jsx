@@ -42,6 +42,18 @@ const getShoppingList = () => {
     })
 }
 
+// DELETE ALL/Clear Btn
+const clearItems = () => {
+    axios.delete('/shopping_list/delete')
+    .then((response) => {
+        getShoppingList()
+    })
+    .catch((error) => {
+        alert('Error clearing items')
+        console.log('error in clearItems:', error);
+    })
+}
+
     return (
         <div className="App">
             <Header />
@@ -49,7 +61,7 @@ const getShoppingList = () => {
             {/* <main>
                 <p>Under Construction...</p>
             </main> */}
-            <GetShoppingList list={shoppingList}/>
+            <GetShoppingList list={shoppingList} clearAllItems={clearItems} />
         </div>
     );
 }
