@@ -11,18 +11,19 @@ function GetShoppingList({list}) {
         <button>Clear</button>
        </div>
        <div>
-       <ul>
+    
         {list.map(item => (
          <>
-            <li key={item.id}>{item.name}</li>
+          <ul key={item.id}>
+            <li>{item.name}</li>
             <li>{item.quantity}</li>
             <li>{item.unit}</li>
             <button>Buy</button>
             <button>Remove</button>
+            </ul>
         </>
        
         ))}
-        </ul>
        </div>
        </> 
     )
