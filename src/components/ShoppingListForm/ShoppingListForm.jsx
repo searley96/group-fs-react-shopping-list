@@ -1,3 +1,5 @@
+import { useState } from 'react'
+
 function ShoppingListForm({addItemToList}){
     console.log('Inside ShoppingListForm()')
 
@@ -15,20 +17,24 @@ function ShoppingListForm({addItemToList}){
         }
 
         addItemToList(newShopList);
+                    // clear inputs
+            setNewShopingList ('');
+            setNewQuantity('');
+            setNewUnit('');
 
     }
 
     return(<>
     <h2>Add an Item</h2>
     <form onSubmit={handleSave}>
-        <lable>
+        <label>
         Item: 
-        </lable>
+        </label>
         <input type='text' value={newListItem} onChange={(event) => setNewShopingList(event.target.value)}/>
         
-        <lable>
+        <label>
         Quantity:
-        </lable> 
+        </label> 
         <input type='number' value={newQuantity} onChange={(event) => setNewQuantity(event.target.value)}/>
 
         <label>

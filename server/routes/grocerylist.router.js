@@ -22,7 +22,7 @@ router.post('/', (req, res) => {
             console.log(`Error making query ${sqlText}`, error);
             res.sendStatus(500);
         })
-
+    })
 // the get request on the server side
 router.get('/', (req, res) => {
     const queryText = `SELECT * FROM shopping_list`;
