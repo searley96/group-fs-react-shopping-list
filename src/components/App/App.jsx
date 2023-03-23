@@ -12,7 +12,6 @@ import GetShoppingList from '../GetShoppingList/GetShoppingList.jsx';
 
 function App() {
 
-    //const
 const [shoppingList, setShoppingList] = useState([]);
 
 
@@ -41,6 +40,7 @@ const getShoppingList = () => {
         console.log(err)
     })
 }
+
 
     return (
         <div className="App">
