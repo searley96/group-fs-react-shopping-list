@@ -23,6 +23,7 @@ router.post('/', (req, res) => {
             res.sendStatus(500);
         })
     })
+
 // the get request on the server side
 router.get('/', (req, res) => {
     const queryText = `SELECT * FROM shopping_list`;
@@ -35,5 +36,22 @@ router.get('/', (req, res) => {
     })
 
 })
+
+// DELETE ALL
+router.delete('/delete', (req, res) => {
+    const queryText = `DELETE FROM shopping_list;`;
+
+    pool.query(queryText)
+    .then((response) => {
+        console.log('Items deleted', response);
+        res.sendStatus(200);
+    })
+    .catch((error) => {
+        console.log(`Error making query ${sqlText}`, error);
+        res.sendStatus(500);
+    })
+})
+
+
 
 module.exports = router;
