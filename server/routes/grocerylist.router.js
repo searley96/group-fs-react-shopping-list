@@ -38,4 +38,18 @@ router.get('/', (req, res) => {
 
 })
 
+//put
+router.put('/:id', (req, res) => {
+    const newShoppingListID = req.params.id;
+    console.log(newShoppingListID);
+    const queryText = `UPDATE "shopping_list" SET "purchased" = TRUE WHERE "id" = $1`
+
+    pool.query(queryText, [newShoppingListID])
+    .then((response) => {
+        res.sendStatus(200);
+    }).catch((err) => {
+        alert('error inside Server PUT')
+    })
+})
+
 module.exports = router;

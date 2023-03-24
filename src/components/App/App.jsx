@@ -14,6 +14,7 @@ function App() {
 
     //const
 const [shoppingList, setShoppingList] = useState([]);
+const [purchased, setPurchased] = useState(true);
 
 
     const addShoppingList = (newShopList) => {
@@ -42,6 +43,17 @@ const getShoppingList = () => {
     })
 }
 
+//put
+const buyBtnToggle = (id) => {
+    console.log('Inside buyBtnToggle', buyBtnToggle);
+     axios.put(`/shopping_list/${id}`)
+    .then(response => {
+        getShoppingList()
+    }).catch (err => {
+        alert('Error in PUT',err)
+    })
+}
+
     return (
         <div className="App">
             <Header />
@@ -49,7 +61,7 @@ const getShoppingList = () => {
             {/* <main>
                 <p>Under Construction...</p>
             </main> */}
-            <GetShoppingList list={shoppingList}/>
+            <GetShoppingList list={shoppingList} buyBtn={buyBtnToggle}/>
         </div>
     );
 }

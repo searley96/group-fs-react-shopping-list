@@ -1,25 +1,11 @@
 import { useState, useEffect } from 'react';
 
-const [toggle, setToggle] = useState(true);
 
-function GetShoppingList({list}) {
+
+function GetShoppingList({list, buyBtn}) {
     console.log('in GetShoppingList', list)
 
-    function buyBtnToggle(){
-        console.log('inside buyBtnToggle()')
-        //if you hit button
-        //see text "purchased"
-        setToggle(!toggle);
-
-        if(toggle){
-            return
-            <div>
-                <p>Purchased!</p>
-            </div>
-        }
-        
-    }
-
+    
     return (
        <>
        <div>
@@ -27,18 +13,24 @@ function GetShoppingList({list}) {
         <button>Reset</button>
         <button>Clear</button>
        </div>
-       <div>
+       <div id="listBox">
     
         {list.map(item => (
          <>
-          <ul key={item.id}>
+          <ul id="itemsInBox"key={item.id}>
             <li>{item.name}</li>
             <li>{item.quantity}</li>
             <li>{item.unit}</li>
-            <div id="buy">
-            <button onClick={buyBtnToggle}>Buy</button>
+
+            { item.purchased ? 
+             <p>Purchased</p> :
+            <li id="buy">
+            <button default={true} onClick={() => buyBtn(item.id)}>Buy</button>
             <button>Remove</button>
-            </div>
+            </li> 
+            }  
+      
+
             </ul>
         </>
        
