@@ -14,6 +14,7 @@ function App() {
 
     //const
 const [shoppingList, setShoppingList] = useState([]);
+const [purchased, setPurchased] = useState(true);
 
 
     const addShoppingList = (newShopList) => {
@@ -42,6 +43,15 @@ const getShoppingList = () => {
     })
 }
 
+
+//put
+const buyBtnToggle = (id) => {
+    console.log('Inside buyBtnToggle', buyBtnToggle);
+     axios.put(`/shopping_list/${id}`)
+    .then(response => {
+        getShoppingList()
+    }).catch (err => {
+        alert('Error in PUT',err)
 // DELETE ALL/Clear Btn
 const clearItems = () => {
     axios.delete('/shopping_list/delete')
@@ -61,7 +71,11 @@ const clearItems = () => {
             {/* <main>
                 <p>Under Construction...</p>
             </main> */}
+
+            <GetShoppingList list={shoppingList} buyBtn={buyBtnToggle}/>
+
             <GetShoppingList list={shoppingList} clearAllItems={clearItems} />
+
         </div>
     );
 }

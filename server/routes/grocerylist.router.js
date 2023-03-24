@@ -22,12 +22,6 @@ router.post('/', (req, res) => {
             console.log(`Error making query ${sqlText}`, error);
             res.sendStatus(500);
 
-        }
-)})
-
-        })
-    })
-
 
 // the get request on the server side
 router.get('/', (req, res) => {
@@ -42,6 +36,22 @@ router.get('/', (req, res) => {
 
 })
 
+
+//put
+router.put('/:id', (req, res) => {
+    const newShoppingListID = req.params.id;
+    console.log(newShoppingListID);
+    const queryText = `UPDATE "shopping_list" SET "purchased" = TRUE WHERE "id" = $1`
+
+    pool.query(queryText, [newShoppingListID])
+    .then((response) => {
+        res.sendStatus(200);
+    }).catch((err) => {
+        alert('error inside Server PUT')
+    })
+})
+
+=======
 // DELETE ALL
 router.delete('/delete', (req, res) => {
     const queryText = `DELETE FROM shopping_list;`;
@@ -56,6 +66,7 @@ router.delete('/delete', (req, res) => {
         res.sendStatus(500);
     })
 })
+
 
 
 

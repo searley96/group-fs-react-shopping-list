@@ -2,7 +2,7 @@ const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
 const groceryList = require('./routes/grocerylist.router')
-const PORT = process.env.PORT || 8000;
+const PORT = process.env.PORT || 5000;
 
 /** ---------- MIDDLEWARE ---------- **/
 app.use(bodyParser.json()); // needed for axios requests
@@ -13,6 +13,7 @@ app.use(express.static('build'));
 
 
 app.use('/shopping_list', groceryList)
+
 
 // and plug them in here with `app.use()`
 
