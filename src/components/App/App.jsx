@@ -43,6 +43,7 @@ const getShoppingList = () => {
     })
 }
 
+
 //put
 const buyBtnToggle = (id) => {
     console.log('Inside buyBtnToggle', buyBtnToggle);
@@ -51,6 +52,15 @@ const buyBtnToggle = (id) => {
         getShoppingList()
     }).catch (err => {
         alert('Error in PUT',err)
+// DELETE ALL/Clear Btn
+const clearItems = () => {
+    axios.delete('/shopping_list/delete')
+    .then((response) => {
+        getShoppingList()
+    })
+    .catch((error) => {
+        alert('Error clearing items')
+        console.log('error in clearItems:', error);
     })
 }
 
@@ -61,7 +71,11 @@ const buyBtnToggle = (id) => {
             {/* <main>
                 <p>Under Construction...</p>
             </main> */}
+
             <GetShoppingList list={shoppingList} buyBtn={buyBtnToggle}/>
+
+            <GetShoppingList list={shoppingList} clearAllItems={clearItems} />
+
         </div>
     );
 }

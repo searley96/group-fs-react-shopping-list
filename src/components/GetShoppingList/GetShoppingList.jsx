@@ -2,7 +2,11 @@ import { useState, useEffect } from 'react';
 
 
 
+
 function GetShoppingList({list, buyBtn}) {
+
+function GetShoppingList({list, clearAllItems}) {
+
     console.log('in GetShoppingList', list)
 
     
@@ -11,7 +15,7 @@ function GetShoppingList({list, buyBtn}) {
        <div>
         <h2>Shopping List</h2>
         <button>Reset</button>
-        <button>Clear</button>
+        <button onClick={clearAllItems}>Clear</button>
        </div>
        <div id="listBox">
     
